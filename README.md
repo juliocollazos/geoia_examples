@@ -1,4 +1,4 @@
-# GeoIA
+# GeoIA Examples
 <img src="./logo.png" alt="Logo" width="400"/>
 > **⚠️Warning**:
 > These examples will be worked out using [Vizly IA](https://vizly.fyi/app)
