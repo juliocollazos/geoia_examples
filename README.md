@@ -1,4 +1,4 @@
-# GeoIA
+# [Logo](./logo.png) GeoIA
 > **⚠️Warning**:
 > These examples will be worked out using [Vizly IA](https://vizly.fyi/app)
 
