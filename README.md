@@ -1,4 +1,5 @@
 ![Logo](./logo.png) 
+<img src="./logo.png" alt="Logo" width="400"/>
 # GeoIA
 > **⚠️Warning**:
 > These examples will be worked out using [Vizly IA](https://vizly.fyi/app)
