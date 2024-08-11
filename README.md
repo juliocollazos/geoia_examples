@@ -8,7 +8,10 @@
 
 ## Example one - Universal Mill List interactive dashboard
 > The material for this exercise can be found in the folder named [Example_One](./Example_one)
-
+##### The [gadm_countries.geojson](./data/gadm_countries.geojson) was generated using the [GADM oficial data](https://gadm.org/download_world.html) and executing the following ogr2ogr command:
+```bash
+ogr2ogr -f GeoJSON c:\...\gadm_country.geojson c:\...\gadm_410.gpkg -dialect sqlite -sql "SELECT NAME_0 AS country_name, ST_SimplifyPreserveTopology(ST_Union(geom),0.05) AS geometry FROM gadm_410 GROUP BY country_name"
+```
 >**🚨Promp 1:**
 >
 
