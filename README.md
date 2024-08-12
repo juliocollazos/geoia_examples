@@ -9,12 +9,13 @@ specialized libraries, the repository provides efficient solutions for everyday 
 > The examples 1 and 2 will be worked out using [Vizly](https://vizly.fyi/app) 
 > and the example three will be worked out using a Jupyter Notebooks
 
-## 1. Universal Mill List interactive dashboard
+## 1. Palm oil mills in Indonesia and Malaysia 
 The material for this exercise can be found in the folder named [Example_One](./Example_one) <br>
 The [gadm_countries.gpkg](./Example_one/gadm_countries.gpkg) was generated using the [GADM oficial data](https://gadm.org/download_world.html) and was processed executing the following [ogr2ogr](https://gdal.org/programs/ogr2ogr.html) command:
 ```bash
 ogr2ogr -f GPKG c:\..\gadm_country.gpkg c:\..\gadm_410.gpkg -nln "gadm_country" -nlt MULTIPOLYGON -dialect sqlite -sql "SELECT NAME_0 AS country_name, ST_SimplifyPreserveTopology(ST_Union(geom),0.05) AS geom FROM gadm_410 GROUP BY country_name" -explodecollections
 ```
+### 
 ### **🚨Promp 1:**
 > I am working on a geospatial data visualization project and need a Python script to load and process information 
 > about palm oil mills in Malaysia and Indonesia. The script should first load a CSV file from the following 
@@ -56,5 +57,5 @@ ogr2ogr -f GPKG c:\..\gadm_country.gpkg c:\..\gadm_410.gpkg -nln "gadm_country" 
 > The material for this exercise can be found in the folder named [Example_two](./Example_two)
 
 
-## Example 3 - Using geoai in python
+## 3. Using geoai in python
 ogr2ogr -f GPKG 
