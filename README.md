@@ -7,7 +7,7 @@
 > The examples 1 and 2 will be worked out using [Vizly](https://vizly.fyi/app) 
 > and the example three will be worked out using a Jupyter Notebooks
 
-## Example one - Universal Mill List interactive dashboard
+## 1. Universal Mill List interactive dashboard
 The material for this exercise can be found in the folder named [Example_One](./Example_one) <br>
 The [gadm_countries.gpkg](./Example_one/gadm_countries.gpkg) was generated using the [GADM oficial data](https://gadm.org/download_world.html) and was processed executing the following [ogr2ogr](https://gdal.org/programs/ogr2ogr.html) command:
 ```bash
@@ -46,7 +46,7 @@ ogr2ogr -f GPKG c:\..\gadm_country.gpkg c:\..\gadm_410.gpkg -nln "gadm_country" 
 > Finally, the script should include a layer control (LayerControl) that allows toggling the visibility of the 
 > 'Country Boundaries' layer and the 'Palm Oil Mills' layer. Once the script is generated, it should be executed, 
 > and the resulting map should be displayed on the screen.
-## Example 2 - Réunion tree cover loss analysis
+## 2. Réunion tree cover loss analysis
 > The material for this exercise can be found in the folder named [Example_two](./Example_two)
 
 
