@@ -38,7 +38,7 @@ ogr2ogr -f GPKG c:\..\gadm_country.gpkg c:\..\gadm_410.gpkg -nln "gadm_country" 
 ### **🚨Promp 3:**
 > Once the data processing is complete, the script should create an interactive map using Folium. 
 > The map should be centered on the average coordinates of the 'Latitude' and 'Longitude' columns from the 
-> filtered points, with an initial zoom level of 5 and using OpenStreetMap tiles. On the map, the country boundaries 
+> filtered points, with an initial zoom level of 4 and using OpenStreetMap tiles. On the map, the country boundaries 
 > should be added as a layer named 'Country Boundaries', with a black border ('color': 'black') and a yellow fill 
 > with 30% opacity ('fillColor': 'yellow', 'fillOpacity': 0.3). The country name ('country_name') should appear as a 
 > popup when clicking on the respective area on the map.
@@ -48,8 +48,10 @@ ogr2ogr -f GPKG c:\..\gadm_country.gpkg c:\..\gadm_410.gpkg -nln "gadm_country" 
 > the mill's name ('Mill Name'), its RSPO certification status ('RSPO Status'), and the country ('Country').
 > Once the script is generated, it should be executed.
 
-### The result will be something like:
+### The result will be something like this:
 <img src="./Data/Ejemplo1.png" alt="Ejemplo1" width="800"/>
+
+Or you can see the results as well in this [Jupyter Notebook](./Example_one/Example_one.ipynb)
 
 # 2. Réunion tree cover loss analysis
 > The material for this exercise can be found in the folder named [Example_two](./Example_two)
