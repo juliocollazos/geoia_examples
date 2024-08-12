@@ -24,17 +24,17 @@ ogr2ogr -f GPKG c:\..\gadm_country.gpkg c:\..\gadm_410.gpkg -nln "gadm_country" 
 > 'Latitude', 'Longitude', and 'Country'. The script should convert the 'Latitude' and 'Longitude' 
 > columns to numeric values. If there are columns that do not contain valid information, such as those with 
 > NaN values in 'Latitude' or 'Longitude', these columns should be removed from the DataFrame.
-### **🚨Promp 2:**
->After cleaning the data, the script should filter the DataFrame to include only rows where the 'Country' column 
+>
+> After cleaning the data, the script should filter the DataFrame to include only rows where the 'Country' column 
 > is either 'Malaysia' or 'Indonesia'. These filtered data should then be converted into a GeoDataFrame using 
 > GeoPandas, transforming the 'Longitude' and 'Latitude' columns into point geometries (geometry) with the 
 > EPSG:4326 coordinate system.
-### **🚨Promp 3:**
+### **🚨Promp 2:**
 >Next, the script should load the country boundaries from a GeoPackage file located 
 > at https://github.com/juliocollazos/geoia_examples/raw/main/Example_one/gadm_country.gpkg. 
 > This file contains a column called 'country_name', which should be used to filter the boundaries to 'Malaysia' 
 > and 'Indonesia'. 
-### **🚨Promp 4:**
+### **🚨Promp 3:**
 > Once the data processing is complete, the script should create an interactive map using Folium. 
 > The map should be centered on the average coordinates of the 'Latitude' and 'Longitude' columns from the 
 > filtered points, with an initial zoom level of 5 and using OpenStreetMap tiles. On the map, the country boundaries 
@@ -45,10 +45,7 @@ ogr2ogr -f GPKG c:\..\gadm_country.gpkg c:\..\gadm_410.gpkg -nln "gadm_country" 
 > In addition, the script should create a MarkerCluster named 'Palm Oil Mills' to group the points corresponding 
 > to the mills. For each mill, a marker should be added to the MarkerCluster that displays a popup containing 
 > the mill's name ('Mill Name'), its RSPO certification status ('RSPO Status'), and the country ('Country').
->
-> Finally, the script should include a layer control (LayerControl) that allows toggling the visibility of the 
-> 'Country Boundaries' layer and the 'Palm Oil Mills' layer. Once the script is generated, it should be executed, 
-> and the resulting map should be displayed on the screen.
+> Once the script is generated, it should be executed.
 
 ### The result will be something like:
 <img src="./Data/Ejemplo1.png" alt="Ejemplo1" width="800"/>
