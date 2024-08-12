@@ -8,13 +8,15 @@
 > and the example three will be worked out using a Jupyter Notebook
 
 ## Example one - Universal Mill List interactive dashboard
-> The material for this exercise can be found in the folder named [Example_One](./Example_one)
-##### The [gadm_countries.gpkg](./Data/gadm_countries.gpkg) was generated using the [GADM oficial data](https://gadm.org/download_world.html) and executing the following ogr2ogr command:
+The material for this exercise can be found in the folder named [Example_One](./Example_one) <br>
+The [gadm_countries.gpkg](./Example_one/gadm_countries.gpkg) was generated using the [GADM oficial data](https://gadm.org/download_world.html) and was processed executing the following [ogr2ogr](https://gdal.org/programs/ogr2ogr.html) command:
 ```bash
-ogr2ogr -f GPKG c:\..\gadm_country.gpkg c:\..\gadm_410.gpkg -nln "gadm_country" -nlt MULTIPOLYGON -dialect sqlite -sql "SELECT NAME_0 AS country_name, ST_SimplifyPreserveTopology(ST_Union(geom),0.05) AS geom FROM gadm_410 GROUP BY country_name"  -explodecollections
+ogr2ogr -f GPKG c:\..\gadm_country.gpkg c:\..\gadm_410.gpkg -nln "gadm_country" -nlt MULTIPOLYGON -dialect sqlite -sql "SELECT NAME_0 AS country_name, ST_SimplifyPreserveTopology(ST_Union(geom),0.05) AS geom FROM gadm_410 GROUP BY country_name" -explodecollections
 ```
->**🚨Promp 1:**
->
+### **🚨Promp 1:**
+```bash
+
+```
 
 ## Example 2 - Réunion tree cover loss analysis
 > The material for this exercise can be found in the folder named [Example_two](./Example_two)
