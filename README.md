@@ -1,4 +1,4 @@
-<img src="./Data/logo.png" alt="Logo" width="400"/>
+<img src="./Data/logo.png" alt="Logo" width="350"/>
 
 # GeoIA Examples
 
@@ -7,7 +7,7 @@ This repository showcases the capabilities of current technologies in automating
 > **⚠️ Warning**:  
 > Examples 1 and 2 will be completed using [Vizly](https://vizly.fyi/app), and Example 3 will be completed using Jupyter Notebooks.
 
-## 1. Palm Oil Mills in Indonesia and Malaysia
+# 1. Palm Oil Mills in Indonesia and Malaysia
 
 The material for this exercise can be found in the folder named [Example_One](./Example_one).
 
@@ -51,8 +51,8 @@ ogr2ogr -f GPKG c:\..\gadm_country.gpkg c:\..\gadm_410.gpkg -nln "gadm_country" 
 ### The result will be something like:
 <img src="./Data/Ejemplo1.png" alt="Ejemplo1" width="800"/>
 
-## 2. Réunion tree cover loss analysis
+# 2. Réunion tree cover loss analysis
 > The material for this exercise can be found in the folder named [Example_two](./Example_two)
 
 
-## 3. Using geoai in python
+# 3. Using geoai in python
