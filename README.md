@@ -50,7 +50,7 @@ ogr2ogr -f GPKG c:\..\gadm_country.gpkg c:\..\gadm_410.gpkg -nln "gadm_country" 
 > and the resulting map should be displayed on the screen.
 
 ### The result will be something like:
-<img src="./Data/Ejemplo1.png" alt="Logo" width="400"/>
+<img src="./Data/Ejemplo1.png" alt="Ejemplo1" width="800"/>
 
 ## 2. Réunion tree cover loss analysis
 > The material for this exercise can be found in the folder named [Example_two](./Example_two)
