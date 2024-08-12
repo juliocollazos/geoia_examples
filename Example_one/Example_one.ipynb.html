@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>Example_one.ipynb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #bcbec4;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Example_one.ipynb</font>
+</center></td></tr></table>
+<pre><span class="s0">#%% 
+# Import required libraries</span>
+<span class="s2">import </span><span class="s1">pandas </span><span class="s2">as </span><span class="s1">pd</span>
+<span class="s2">import </span><span class="s1">geopandas </span><span class="s2">as </span><span class="s1">gpd</span>
+<span class="s2">import </span><span class="s1">os</span>
+<span class="s2">import </span><span class="s1">pyproj</span>
+
+<span class="s1">proj_lib </span><span class="s3">= </span><span class="s1">os</span><span class="s3">.</span><span class="s1">path</span><span class="s3">.</span><span class="s1">join</span><span class="s3">(</span><span class="s1">os</span><span class="s3">.</span><span class="s1">environ</span><span class="s3">[</span><span class="s4">'CONDA_PREFIX'</span><span class="s3">], </span><span class="s4">'Library'</span><span class="s3">, </span><span class="s4">'share'</span><span class="s3">, </span><span class="s4">'proj'</span><span class="s3">)</span>
+<span class="s1">os</span><span class="s3">.</span><span class="s1">environ</span><span class="s3">[</span><span class="s4">'PROJ_LIB'</span><span class="s3">] = </span><span class="s1">proj_lib</span>
+<span class="s1">pyproj</span><span class="s3">.</span><span class="s1">datadir</span><span class="s3">.</span><span class="s1">set_data_dir</span><span class="s3">(</span><span class="s1">proj_lib</span><span class="s3">)</span>
+
+<span class="s0"># Load the CSV file from the URL</span>
+<span class="s1">url </span><span class="s3">= </span><span class="s4">'https://raw.githubusercontent.com/juliocollazos/geoia_examples/main/Example_one/UML_data.csv'</span>
+<span class="s1">df </span><span class="s3">= </span><span class="s1">pd</span><span class="s3">.</span><span class="s1">read_csv</span><span class="s3">(</span><span class="s1">url</span><span class="s3">)</span>
+
+<span class="s0"># Display the first few rows and data info</span>
+<span class="s1">print</span><span class="s3">(</span><span class="s1">df</span><span class="s3">.</span><span class="s1">head</span><span class="s3">())</span>
+<span class="s1">print</span><span class="s3">(</span><span class="s1">df</span><span class="s3">.</span><span class="s1">info</span><span class="s3">())</span>
+<span class="s0">#%% 
+# Convert 'Latitude' and 'Longitude' to numeric, removing invalid values</span>
+<span class="s1">df</span><span class="s3">[</span><span class="s4">'Latitude'</span><span class="s3">] = </span><span class="s1">pd</span><span class="s3">.</span><span class="s1">to_numeric</span><span class="s3">(</span><span class="s1">df</span><span class="s3">[</span><span class="s4">'Latitude'</span><span class="s3">], </span><span class="s1">errors</span><span class="s3">=</span><span class="s4">'coerce'</span><span class="s3">)</span>
+<span class="s1">df</span><span class="s3">[</span><span class="s4">'Longitude'</span><span class="s3">] = </span><span class="s1">pd</span><span class="s3">.</span><span class="s1">to_numeric</span><span class="s3">(</span><span class="s1">df</span><span class="s3">[</span><span class="s4">'Longitude'</span><span class="s3">], </span><span class="s1">errors</span><span class="s3">=</span><span class="s4">'coerce'</span><span class="s3">)</span>
+
+<span class="s0"># Remove rows with invalid coordinates</span>
+<span class="s1">df </span><span class="s3">= </span><span class="s1">df</span><span class="s3">.</span><span class="s1">dropna</span><span class="s3">(</span><span class="s1">subset</span><span class="s3">=[</span><span class="s4">'Latitude'</span><span class="s3">, </span><span class="s4">'Longitude'</span><span class="s3">])</span>
+
+<span class="s0"># Filter for Malaysia and Indonesia</span>
+<span class="s1">df_filtered </span><span class="s3">= </span><span class="s1">df</span><span class="s3">[</span><span class="s1">df</span><span class="s3">[</span><span class="s4">'Country'</span><span class="s3">].</span><span class="s1">isin</span><span class="s3">([</span><span class="s4">'Malaysia'</span><span class="s3">, </span><span class="s4">'Indonesia'</span><span class="s3">])]</span>
+
+<span class="s0"># Create a GeoDataFrame</span>
+<span class="s1">gdf </span><span class="s3">= </span><span class="s1">gpd</span><span class="s3">.</span><span class="s1">GeoDataFrame</span><span class="s3">(</span>
+    <span class="s1">df_filtered</span><span class="s3">, </span>
+    <span class="s1">geometry</span><span class="s3">=</span><span class="s1">gpd</span><span class="s3">.</span><span class="s1">points_from_xy</span><span class="s3">(</span><span class="s1">df_filtered</span><span class="s3">.</span><span class="s1">Longitude</span><span class="s3">, </span><span class="s1">df_filtered</span><span class="s3">.</span><span class="s1">Latitude</span><span class="s3">),</span>
+    <span class="s1">crs</span><span class="s3">=</span><span class="s4">&quot;EPSG:4326&quot;</span>
+<span class="s3">)</span>
+
+<span class="s0"># Display the first few rows of the GeoDataFrame and its info</span>
+<span class="s1">print</span><span class="s3">(</span><span class="s1">gdf</span><span class="s3">.</span><span class="s1">head</span><span class="s3">())</span>
+<span class="s1">print</span><span class="s3">(</span><span class="s1">gdf</span><span class="s3">.</span><span class="s1">info</span><span class="s3">())</span>
+<span class="s0">#%% 
+# Load the country boundaries from the GeoPackage file</span>
+<span class="s1">country_boundaries_url </span><span class="s3">= </span><span class="s4">'https://github.com/juliocollazos/geoia_examples/raw/main/Example_one/gadm_country.gpkg'</span>
+<span class="s1">country_boundaries </span><span class="s3">= </span><span class="s1">gpd</span><span class="s3">.</span><span class="s1">read_file</span><span class="s3">(</span><span class="s1">country_boundaries_url</span><span class="s3">)</span>
+
+<span class="s0"># Filter the boundaries to include only Malaysia and Indonesia</span>
+<span class="s1">filtered_boundaries </span><span class="s3">= </span><span class="s1">country_boundaries</span><span class="s3">[</span><span class="s1">country_boundaries</span><span class="s3">[</span><span class="s4">'country_name'</span><span class="s3">].</span><span class="s1">isin</span><span class="s3">([</span><span class="s4">'Malaysia'</span><span class="s3">, </span><span class="s4">'Indonesia'</span><span class="s3">])]</span>
+
+<span class="s0"># Display information about the filtered boundaries</span>
+<span class="s1">print</span><span class="s3">(</span><span class="s1">filtered_boundaries</span><span class="s3">.</span><span class="s1">info</span><span class="s3">())</span>
+<span class="s1">print</span><span class="s3">(</span><span class="s1">filtered_boundaries</span><span class="s3">[[</span><span class="s4">'country_name'</span><span class="s3">, </span><span class="s4">'geometry'</span><span class="s3">]])</span>
+<span class="s0">#%% 
+</span><span class="s2">import </span><span class="s1">folium</span>
+<span class="s2">from </span><span class="s1">folium</span><span class="s3">.</span><span class="s1">plugins </span><span class="s2">import </span><span class="s1">MarkerCluster</span>
+
+<span class="s0"># Now, let's ensure both GeoDataFrames have the correct CRS</span>
+<span class="s1">gdf </span><span class="s3">= </span><span class="s1">gdf</span><span class="s3">.</span><span class="s1">set_crs</span><span class="s3">(</span><span class="s1">epsg</span><span class="s3">=</span><span class="s5">4326</span><span class="s3">, </span><span class="s1">inplace</span><span class="s3">=</span><span class="s2">False</span><span class="s3">)</span>
+<span class="s1">filtered_boundaries </span><span class="s3">= </span><span class="s1">filtered_boundaries</span><span class="s3">.</span><span class="s1">set_crs</span><span class="s3">(</span><span class="s1">epsg</span><span class="s3">=</span><span class="s5">4326</span><span class="s3">, </span><span class="s1">inplace</span><span class="s3">=</span><span class="s2">False</span><span class="s3">)</span>
+<span class="s0"># Calculate the average coordinates for the map center</span>
+<span class="s1">avg_lat </span><span class="s3">= </span><span class="s1">gdf</span><span class="s3">[</span><span class="s4">'Latitude'</span><span class="s3">].</span><span class="s1">mean</span><span class="s3">()</span>
+<span class="s1">avg_lon </span><span class="s3">= </span><span class="s1">gdf</span><span class="s3">[</span><span class="s4">'Longitude'</span><span class="s3">].</span><span class="s1">mean</span><span class="s3">()</span>
+
+<span class="s0"># Create a map centered on the average coordinates</span>
+<span class="s1">map_center </span><span class="s3">= </span><span class="s1">folium</span><span class="s3">.</span><span class="s1">Map</span><span class="s3">(</span><span class="s1">location</span><span class="s3">=[</span><span class="s1">avg_lat</span><span class="s3">, </span><span class="s1">avg_lon</span><span class="s3">], </span><span class="s1">zoom_start</span><span class="s3">=</span><span class="s5">5</span><span class="s3">, </span><span class="s1">tiles</span><span class="s3">=</span><span class="s4">'OpenStreetMap'</span><span class="s3">)</span>
+
+<span class="s0"># Add country boundaries layer</span>
+<span class="s1">folium</span><span class="s3">.</span><span class="s1">GeoJson</span><span class="s3">(</span>
+    <span class="s1">filtered_boundaries</span><span class="s3">,</span>
+    <span class="s1">name</span><span class="s3">=</span><span class="s4">'Country Boundaries'</span><span class="s3">,</span>
+    <span class="s1">style_function</span><span class="s3">=</span><span class="s2">lambda </span><span class="s1">feature</span><span class="s3">: {</span>
+        <span class="s4">'fillColor'</span><span class="s3">: </span><span class="s4">'yellow'</span><span class="s3">,</span>
+        <span class="s4">'color'</span><span class="s3">: </span><span class="s4">'black'</span><span class="s3">,</span>
+        <span class="s4">'weight'</span><span class="s3">: </span><span class="s5">2</span><span class="s3">,</span>
+        <span class="s4">'fillOpacity'</span><span class="s3">: </span><span class="s5">0.3</span>
+    <span class="s3">},</span>
+    <span class="s1">popup</span><span class="s3">=</span><span class="s1">folium</span><span class="s3">.</span><span class="s1">GeoJsonPopup</span><span class="s3">(</span><span class="s1">fields</span><span class="s3">=[</span><span class="s4">'country_name'</span><span class="s3">])</span>
+<span class="s3">).</span><span class="s1">add_to</span><span class="s3">(</span><span class="s1">map_center</span><span class="s3">)</span>
+
+<span class="s0"># Create a MarkerCluster for palm oil mills</span>
+<span class="s1">marker_cluster </span><span class="s3">= </span><span class="s1">MarkerCluster</span><span class="s3">(</span><span class="s1">name</span><span class="s3">=</span><span class="s4">'Palm Oil Mills'</span><span class="s3">).</span><span class="s1">add_to</span><span class="s3">(</span><span class="s1">map_center</span><span class="s3">)</span>
+
+<span class="s0"># Add markers for each palm oil mill</span>
+<span class="s2">for </span><span class="s1">idx</span><span class="s3">, </span><span class="s1">row </span><span class="s2">in </span><span class="s1">gdf</span><span class="s3">.</span><span class="s1">iterrows</span><span class="s3">():</span>
+    <span class="s1">popup_text </span><span class="s3">= </span><span class="s4">f&quot;Mill Name: </span><span class="s2">{</span><span class="s1">row</span><span class="s3">[</span><span class="s4">'Mill Name'</span><span class="s3">]</span><span class="s2">}</span><span class="s4">&lt;br&gt;RSPO Status: </span><span class="s2">{</span><span class="s1">row</span><span class="s3">[</span><span class="s4">'RSPO Status'</span><span class="s3">]</span><span class="s2">}</span><span class="s4">&lt;br&gt;Country: </span><span class="s2">{</span><span class="s1">row</span><span class="s3">[</span><span class="s4">'Country'</span><span class="s3">]</span><span class="s2">}</span><span class="s4">&quot;</span>
+    <span class="s1">folium</span><span class="s3">.</span><span class="s1">Marker</span><span class="s3">(</span>
+        <span class="s1">location</span><span class="s3">=[</span><span class="s1">row</span><span class="s3">[</span><span class="s4">'Latitude'</span><span class="s3">], </span><span class="s1">row</span><span class="s3">[</span><span class="s4">'Longitude'</span><span class="s3">]],</span>
+        <span class="s1">popup</span><span class="s3">=</span><span class="s1">popup_text</span>
+    <span class="s3">).</span><span class="s1">add_to</span><span class="s3">(</span><span class="s1">marker_cluster</span><span class="s3">)</span>
+
+<span class="s0"># Add layer control</span>
+<span class="s1">folium</span><span class="s3">.</span><span class="s1">LayerControl</span><span class="s3">().</span><span class="s1">add_to</span><span class="s3">(</span><span class="s1">map_center</span><span class="s3">)</span>
+
+<span class="s0"># Display the map</span>
+<span class="s1">map_center</span></pre>
+</body>
+</html>
