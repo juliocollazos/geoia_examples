@@ -1,8 +1,10 @@
 <img src="./Data/logo.png" alt="Logo" width="400"/>
 
 # GeoIA Examples
-#### ⚠️ Arreglar introducción
-#### This repository aims to show several of the current functionalities for various geographic processes with the ability to automate through the use of LLMs and libraries that provide functionalities in everyday tasks such as land cover classification.
+This repository is designed to showcase the capabilities of current technologies in automating various geospatial 
+processes. It focuses on generating statistical analyses and spatial visualizations, including outputs such as 
+interactive maps, graphical representations, and base cartography. By leveraging large language models (LLMs) and 
+specialized libraries, the repository provides efficient solutions for everyday geospatial tasks.
 > **⚠️Warning**:
 > The examples 1 and 2 will be worked out using [Vizly](https://vizly.fyi/app) 
 > and the example three will be worked out using a Jupyter Notebooks
