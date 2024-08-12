@@ -48,6 +48,10 @@ ogr2ogr -f GPKG c:\..\gadm_country.gpkg c:\..\gadm_410.gpkg -nln "gadm_country" 
 > Finally, the script should include a layer control (LayerControl) that allows toggling the visibility of the 
 > 'Country Boundaries' layer and the 'Palm Oil Mills' layer. Once the script is generated, it should be executed, 
 > and the resulting map should be displayed on the screen.
+
+### The result will be something like:
+<img src="./Data/Ejemplo1.png" alt="Logo" width="400"/>
+
 ## 2. Réunion tree cover loss analysis
 > The material for this exercise can be found in the folder named [Example_two](./Example_two)
 
