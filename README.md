@@ -18,16 +18,14 @@ ogr2ogr -f GPKG c:\..\gadm_country.gpkg c:\..\gadm_410.gpkg -nln "gadm_country" 
 ### 
 ### **🚨Promp 1:**
 > I am working on a geospatial data visualization project and need a Python script to load and process information 
-> about palm oil mills in Malaysia and Indonesia. The script should first load a CSV file from the following 
-> URL: https://raw.githubusercontent.com/juliocollazos/geoia_examples/main/Example_one/UML_data.csv. 
-> This file contains information about the mills, with relevant columns including 'Mill Name', 'RSPO Status', 
-> 'Latitude', 'Longitude', and 'Country'. The script should convert the 'Latitude' and 'Longitude' 
-> columns to numeric values. If there are columns that do not contain valid information, such as those with 
-> NaN values in 'Latitude' or 'Longitude', these columns should be removed from the DataFrame.
->
-> After cleaning the data, the script should filter the DataFrame to include only rows where the 'Country' column 
-> is either 'Malaysia' or 'Indonesia'. These filtered data should then be converted into a GeoDataFrame using 
-> GeoPandas, transforming the 'Longitude' and 'Latitude' columns into point geometries (geometry) with the 
+> about palm oil mills in Malaysia and Indonesia. The script should load a CSV file from the following 
+> URL: https://raw.githubusercontent.com/juliocollazos/geoia_examples/main/Example_one/UML_data.csv. This file contains 
+> relevant information such as 'Mill Name,' 'RSPO Status,' 'Latitude,' 'Longitude,' and 'Country.'
+
+> The script should convert the 'Latitude' and 'Longitude' columns to numeric values and remove columns containing 
+> invalid (NaN) values in these coordinates. Then, it should filter the DataFrame to include only the rows where the 
+> 'Country' column is 'Malaysia' or 'Indonesia.' The filtered data should be converted into a GeoDataFrame using 
+> GeoPandas, transforming the 'Longitude' and 'Latitude' columns into point geometries with the 
 > EPSG:4326 coordinate system.
 ### **🚨Promp 2:**
 >Next, the script should load the country boundaries from a GeoPackage file located 
