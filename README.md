@@ -15,8 +15,11 @@ The material for this exercise con be found in the folder names [Folder]()
 
 ### **🚨Promp 1:**
 > Firts promp
-> Secod promp
->
+> dff
+
+### **🚨Promp 2:**
+
+## **🚨Promp 1:**
  
 # 2. Palm Oil Mills in Indonesia and Malaysia
 
@@ -65,7 +68,9 @@ ogr2ogr -f GPKG c:\..\gadm_country.gpkg c:\..\gadm_410.gpkg -nln "gadm_country" 
 Or you can see the results as well in this [Jupyter Notebook](./Example_one/Example_one.ipynb)
 
 # 2. Réunion tree cover loss analysis
+
 > The material for this exercise can be found in the folder named [Example_two](./Example_two)
 
+> The vectors include in GPKG ar generated using Hansen data for the 2023, the data 
 
 # 3. Using geoai in python
