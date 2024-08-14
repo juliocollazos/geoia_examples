@@ -78,40 +78,68 @@ Or you can see the results as well in this [Jupyter Notebook](Example_two/Exampl
 > updated for the 2023. The information is presented as a Geopackage (GPKG) and contains 4 files, forest2016, forest2024, defo2016_2023 and admin_levels.
 
 ### **🚨Promp:**
-> Create a comprehensive visualization of forest cover and deforestation in Reunion Island using Python, geopandas, and Plotly. 
-> The visualization should include the following elements:
->> 1. Data Source:<br>
->>      a. Use the GeoPackage file from this URL (accessing directly): 'https://github.com/juliocollazos/geoia_examples/raw/main/Example_three/Reunion.gpkg' <br>
->>      b. Load three layers: 'admin_levels', 'forest2016', and 'defo2016_2023' <br>
->> 2. Data Processing: <br>
->>      a. Calculate areas in hectares for all layers <br>
->>      b. Perform spatial overlay of forest and deforestation data with administrative boundaries <br>
->>      c. Summarize forest cover and deforestation by municipality <br>
->> 3. Visualization Layout: <br>
->>      a. Create a figure with dimensions 1200x1600 pixels (width x height) <br>
->>      b. Use a 2x2 subplot layout with the following structure: Top-left (80% width, 80% height): Map, Top-right (20% width): Forest cover bar chart, Bottom-right (20% width): Deforestation bar chart <br>
->> 4. Map (Main Subplot): <br>
->>      a. Use Plotly's Choroplethmapbox for all map layers <br>
->>      b. Layer 1: Administrative boundaries (black outlines, transparent fill) <br>
->>      c. Layer 2: Forest cover (green, semi-transparent) <br>
->>      d. Layer 3: Deforestation areas (red, semi-transparent) <br>
->>      e. Use OpenStreetMap as the base map <br>
->>      f. Center the map on Reunion Island and set an appropriate zoom level <br>
->> 5. Bar Charts: <br>
->>      a. Top-right: Forest cover by municipality (green bars) <br>
->>      b. Bottom-right: Deforestation by municipality (red bars) <br>
->>      c. Sort bars in descending order of area <br>
->>      d. Rotate x-axis labels 45 degrees for readability <br>
->>      e. Label y-axis as 'Hectares' <br>
->> 6. General Formatting: <br>
->>      a. Add a title: 'Forest Cover and Deforestation in Reunion Island' <br>
->>      b. Ensure all elements are clearly visible and not cut off <br>
->>      c. Use appropriate font sizes for readability <br>
->> 7. Output: <br>
->>      a. Display the final figure using fig.show() <br>
-> <br>
->Please provide the complete Python code to accomplish this task, including all necessary imports, data loading, 
->processing steps, and the creation of the final visualization.
+
+- **URL**: 'https://github.com/juliocollazos/geoia_examples/raw/main/Example_three/Reunion.gpkg'
+- **Layers to load**:
+  1. 'admin_levels': Administrative boundaries
+  2. 'forest2016': Forest cover in 2016
+  3. 'defo2016_2023': Deforestation areas between 2016 and 2023
+
+## 2. Data Processing
+
+1. Calculate areas in hectares for all layers
+   - Create a new column 'area_ha' in each GeoDataFrame by dividing the area of each geometry by 10000
+2. Perform spatial overlay of forest and deforestation data with administrative boundaries
+   - Use `gpd.overlay()` with `how='intersection'` to combine layers
+   - Ensure that only necessary columns are included in the overlay to avoid column conflicts
+   - After the overlay, recalculate the 'area_ha' column for the resulting GeoDataFrames
+3. Summarize forest cover and deforestation by municipality
+   - Group by the 'municipality' column and sum the 'area_ha' column
+
+## 3. Visualization Layout
+
+- Figure dimensions: 1200x1600 pixels (width x height)
+- 2x2 subplot layout:
+  - Top-left (80% width, 80% height): Map
+  - Top-right (20% width): Forest cover bar chart
+  - Bottom-right (20% width): Deforestation bar chart
+
+## 4. Map (Main Subplot)
+
+- Use Plotly's Choroplethmapbox for all map layers
+- Layers:
+  1. Administrative boundaries (black outlines, transparent fill)
+  2. Forest cover (green, semi-transparent)
+  3. Deforestation areas (red, semi-transparent)
+- Base map: OpenStreetMap
+- Center the map on Reunion Island and set an appropriate zoom level
+
+## 5. Bar Charts
+
+1. Top-right: Forest cover by municipality
+   - Green bars
+2. Bottom-right: Deforestation by municipality
+   - Red bars
+- Sort bars in descending order of area
+- Rotate x-axis labels 45 degrees for readability
+- Label y-axis as 'Hectares'
+
+## 6. General Formatting
+
+- Title: 'Forest Cover and Deforestation in Reunion Island'
+- Ensure all elements are clearly visible and not cut off
+- Use appropriate font sizes for readability
+
+## 7. Error Handling and Data Verification
+
+- After each major step (loading, processing, overlay), print the column names and first few rows of the resulting DataFrames to verify the data structure
+- Include error handling to catch and report any issues with data processing or column names
+
+## 8. Output
+
+- Display the final figure using `fig.show()`
+
+Please 
 
 
 # 4. Using geoai in python
