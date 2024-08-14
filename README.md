@@ -78,11 +78,16 @@ Or you can see the results as well in this [Jupyter Notebook](Example_two/Exampl
 > updated for the 2023. The information is presented as a Geopackage (GPKG) and contains 4 files, forest2016, forest2024, defo2016_2023 and admin_levels.
 
 ### **🚨Promp 1:**
-> Our team is working on a geospatial data analysis to calculate and visualize the probability of tree cover loss within the 
-> first administrative level of Reunion Island. As the first step, we are using the Hansen dataset, which includes information 
-> on tree canopy cover for the year 2000, tree cover loss from 2000 to 2023, and other related layers. The task involves loading 
-> the GeoPackage https://github.com/juliocollazos/geoia_examples/blob/main/Example_three/Reunion.gpkg and creating variables for 
-> the following layers: admin_levels, forest2016, forest2024, and defo2016_2023.
+> Our team is conducting a geospatial data analysis to calculate and visualize forest cover within the first administrative level of Reunion Island. 
+> As a first step, we are using a GeoPackage file that contains information about administrative levels and forest cover for the year 2016. 
+> The task involves loading the GeoPackage from the URL https://github.com/juliocollazos/geoia_examples/raw/main/Example_three/Reunion.gpkg and 
+> creating variables for the layers admin_levels and forest2016.
+> Once the data is loaded calculate the area in hectares for the layer call forest2016, defo2016_2023 and admin_levels, in this process name the 
+> column as 'area_ha'.
+> Once the calculates are done make a map with the administrative leves at the botton (without fill and the outline in black),
+> adding as well the forest2016 layer in green color and add the defo1026_2023 layer in red, then add two graphics, once that shows the number 
+> of hectares of forest in 2016 for each administrative level (organized largest-minimum), the second graph should shows the number of hectar related to
+> tree cover loss (defo2016_2023), so, will be an element with three elements, the map and addition 2 graphics.
 
 ### **🚨Promp 2:**
 > Once the script load the administrative data from the admin_levels layer and calculate the forest cover for 2016 using the 
