@@ -85,7 +85,7 @@ Or you can see the results as well in this [Jupyter Notebook](Example_two/Exampl
 > the following layers: admin_levels, forest2016, forest2024, and defo2016_2023.
 
 ### **🚨Promp 2:**
->  The machine should load the administrative data from the admin_levels layer and calculate the forest cover for 2016 using the 
+> Once the script load the administrative data from the admin_levels layer and calculate the forest cover for 2016 using the 
 > municipality column as the key. Afterward, using the same admin_levels data, it should perform a similar calculation for the 
 > file named defo2016_2023 to assess the forest loss from 2016 to 2023.
 > 
