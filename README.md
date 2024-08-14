@@ -77,22 +77,41 @@ Or you can see the results as well in this [Jupyter Notebook](Example_two/Exampl
 > This example is based on [Hansen dataset](https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/download.html) 
 > updated for the 2023. The information is presented as a Geopackage (GPKG) and contains 4 files, forest2016, forest2024, defo2016_2023 and admin_levels.
 
-### **🚨Promp 1:**
-> Our team is conducting a geospatial data analysis to calculate and visualize forest cover within the first administrative level of Reunion Island. 
-> As a first step, we are using a GeoPackage file that contains information about administrative levels and forest cover for the year 2016. 
-> The task involves loading the GeoPackage from the URL https://github.com/juliocollazos/geoia_examples/raw/main/Example_three/Reunion.gpkg and 
-> creating variables for the layers admin_levels and forest2016.
-> Once the data is loaded calculate the area in hectares for the layer call forest2016, defo2016_2023 and admin_levels, in this process name the 
-> column as 'area_ha'.
-> Once the calculates are done make a map with the administrative leves at the botton (without fill and the outline in black),
-> adding as well the forest2016 layer in green color and add the defo1026_2023 layer in red, then add two graphics, once that shows the number 
-> of hectares of forest in 2016 for each administrative level (organized largest-minimum), the second graph should shows the number of hectar related to
-> tree cover loss (defo2016_2023), so, will be an element with three elements, the map and addition 2 graphics.
+### **🚨Promp:**
+> Create a comprehensive visualization of forest cover and deforestation in Reunion Island using Python, geopandas, and Plotly. 
+> The visualization should include the following elements:
+>> 1. Data Source:<br>
+>>      a. Use the GeoPackage file from this URL: 'https://github.com/juliocollazos/geoia_examples/raw/main/Example_three/Reunion.gpkg' <br>
+>>      b. Load three layers: 'admin_levels', 'forest2016', and 'defo2016_2023' <br>
+>> 2. Data Processing: <br>
+>>      a. Calculate areas in hectares for all layers <br>
+>>      b. Perform spatial overlay of forest and deforestation data with administrative boundaries <br>
+>>      c. Summarize forest cover and deforestation by municipality <br>
+>> 3. Visualization Layout: <br>
+>>      a. Create a figure with dimensions 1200x1600 pixels (width x height) <br>
+>>      b. Use a 2x2 subplot layout with the following structure: Top-left (80% width, 80% height): Map, Top-right (20% width): Forest cover bar chart, Bottom-right (20% width): Deforestation bar chart <br>
+>> 4. Map (Main Subplot): <br>
+>>      a. Use Plotly's Choroplethmapbox for all map layers <br>
+>>      b. Layer 1: Administrative boundaries (black outlines, transparent fill) <br>
+>>      c. Layer 2: Forest cover (green, semi-transparent) <br>
+>>      d. Layer 3: Deforestation areas (red, semi-transparent) <br>
+>>      e. Use OpenStreetMap as the base map <br>
+>>      f. Center the map on Reunion Island and set an appropriate zoom level <br>
+>> 5. Bar Charts: <br>
+>>      a. Top-right: Forest cover by municipality (green bars) <br>
+>>      b. Bottom-right: Deforestation by municipality (red bars) <br>
+>>      c. Sort bars in descending order of area <br>
+>>      d. Rotate x-axis labels 45 degrees for readability <br>
+>>      e. Label y-axis as 'Hectares' <br>
+>> 6. General Formatting: <br>
+>>      a. Add a title: 'Forest Cover and Deforestation in Reunion Island' <br>
+>>      b. Ensure all elements are clearly visible and not cut off <br>
+>>      c. Use appropriate font sizes for readability <br>
+>> 7. Output: <br>
+>>      a. Display the final figure using fig.show() <br>
+> <br>
+>Please provide the complete Python code to accomplish this task, including all necessary imports, data loading, 
+>processing steps, and the creation of the final visualization.
 
-### **🚨Promp 2:**
-> Once the script load the administrative data from the admin_levels layer and calculate the forest cover for 2016 using the 
-> municipality column as the key. Afterward, using the same admin_levels data, it should perform a similar calculation for the 
-> file named defo2016_2023 to assess the forest loss from 2016 to 2023.
-> 
 
 # 4. Using geoai in python
