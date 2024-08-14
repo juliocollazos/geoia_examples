@@ -81,7 +81,7 @@ Or you can see the results as well in this [Jupyter Notebook](Example_two/Exampl
 > Create a comprehensive visualization of forest cover and deforestation in Reunion Island using Python, geopandas, and Plotly. 
 > The visualization should include the following elements:
 >> 1. Data Source:<br>
->>      a. Use the GeoPackage file from this URL: 'https://github.com/juliocollazos/geoia_examples/raw/main/Example_three/Reunion.gpkg' <br>
+>>      a. Use the GeoPackage file from this URL (accessing directly): 'https://github.com/juliocollazos/geoia_examples/raw/main/Example_three/Reunion.gpkg' <br>
 >>      b. Load three layers: 'admin_levels', 'forest2016', and 'defo2016_2023' <br>
 >> 2. Data Processing: <br>
 >>      a. Calculate areas in hectares for all layers <br>
