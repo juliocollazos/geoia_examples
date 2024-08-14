@@ -78,10 +78,16 @@ Or you can see the results as well in this [Jupyter Notebook](Example_two/Exampl
 > updated for the 2023. The information is presented as a Geopackage (GPKG) and contains 4 files, forest2016, forest2024, defo2016_2023 and admin_levels.
 
 ### **🚨Promp 1:**
-> My team and I are working on a geospatial data analysis that consist in calculate and visualize the probability of cover loss in
-> the first administrative level of the Reunion country, for this we select the Hansen dataset that contains information about
-> tree canopy cover for 2000, tree cover loss since 2000 to 2023 and other layers that we don't considered to use for this analysis. 
-> Generate a script for load this geopackage file 
+> Our team is working on a geospatial data analysis to calculate and visualize the probability of tree cover loss within the 
+> first administrative level of Reunion Island. As the first step, we are using the Hansen dataset, which includes information 
+> on tree canopy cover for the year 2000, tree cover loss from 2000 to 2023, and other related layers. The task involves loading 
+> the GeoPackage https://github.com/juliocollazos/geoia_examples/blob/main/Example_three/Reunion.gpkg and creating variables for 
+> the following layers: admin_levels, forest2016, forest2024, and defo2016_2023.
+
+### **🚨Promp 2:**
+>  The machine should load the administrative data from the admin_levels layer and calculate the forest cover for 2016 using the 
+> municipality column as the key. Afterward, using the same admin_levels data, it should perform a similar calculation for the 
+> file named defo2016_2023 to assess the forest loss from 2016 to 2023.
 > 
 
 # 4. Using geoai in python
